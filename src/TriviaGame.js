@@ -34,9 +34,10 @@ class TriviaGame{
 
     updateAttributes(category,difficulty,type,questionNumber){
                     //NO FUNCIONA
-            const triviaAttributes = document.getElementById('trivia-attributes');
-            //triviaAttributes.innerHTML=' '
-            //var attributes = document.createElement('div')
+            const triviaAttributes = document.querySelector('.trivia-attributes');
+            triviaAttributes.innerHTML=' '
+            var attributes = document.createElement('div')
+            attributes.setAttribute('class', 'trivia-attributes');
             attributes.innerHTML = `<div class="trivia-attributes__header">Let's Play</div>`
                             +`<span class="trivia-attributes__category-label" id="category-label">Category:</span>`
                             +`<span class="trivia-attributes__category-response" id="category-response">${category}</span>`
@@ -47,46 +48,46 @@ class TriviaGame{
                             +`<span class="trivia-attributes__question-number-label" id="question-number-label">Question number:</span>`
                             +`<span class="trivia-attributes__question-number-response" id="question-number-response">${questionNumber}</span>`
                             +`<span class="trivia-attributes__score" id="score">Score: ${this.score} points</span>`
+            console.log(attributes);
             triviaAttributes.appendChild(attributes)
     }
     
+            // Getters
+        // generateRandomNumber(length){
+        //     //Va agenerar un numero random
+        //     return Math.floor(Math.random()*length)
+        // }
 
-    // Getters
-    // generateRandomNumber(length){
-    //     //Va agenerar un numero random
-    //     return Math.floor(Math.random()*length)
-    // }
+        // get oneCountry(){ 
+        //     //Devuelve un pais
+        //     const random = this.generateRandomNumber(this.countries.length);
+        //     return this.countries[random];
+        // }
 
-    // get oneCountry(){ 
-    //     //Devuelve un pais
-    //     const random = this.generateRandomNumber(this.countries.length);
-    //     return this.countries[random];
-    // }
+        // choiceCountries(){
+        //     // regresa los tres paises que vana  estar en el juego
+        //     for(var i=0; i < 3; i++){ // va a generar mis tres paises aleatorios
+        //         const pais = this.oneCountry //Aqui se manda a llamar mi getter
+        //         this.selectedCountries.push(pais)
+        //     }
+        //     return this.selectedCountries;
+        // }
 
-    // choiceCountries(){
-    //     // regresa los tres paises que vana  estar en el juego
-    //     for(var i=0; i < 3; i++){ // va a generar mis tres paises aleatorios
-    //         const pais = this.oneCountry //Aqui se manda a llamar mi getter
-    //         this.selectedCountries.push(pais)
-    //     }
-    //     return this.selectedCountries;
-    // }
+        // get choiceWinner(){
+        //     //este me va a devolver el pais correcto o ganador
+        //     const random = this.generateRandomNumber(this.selectedCountries.length)
+        //     return this.selectedCountries[random]
+        // }
 
-    // get choiceWinner(){
-    //     //este me va a devolver el pais correcto o ganador
-    //     const random = this.generateRandomNumber(this.selectedCountries.length)
-    //     return this.selectedCountries[random]
-    // }
-
-    // buildFlag(cb,info){
-    //     // Info es la informacion del pais
-    //     // cb es un callback el cual me va a yudar a ejecutar el listener de las imagenes
-    //     const img = document.createElement('img');
-    //     img.setAttribute('src',info.flag)
-    //     img.setAttribute('id',info.name)
-    //     img.addEventListener('click',cb)
-    //     return img;
-    // }
+        // buildFlag(cb,info){
+        //     // Info es la informacion del pais
+        //     // cb es un callback el cual me va a yudar a ejecutar el listener de las imagenes
+        //     const img = document.createElement('img');
+        //     img.setAttribute('src',info.flag)
+        //     img.setAttribute('id',info.name)
+        //     img.addEventListener('click',cb)
+        //     return img;
+        // }
 
     start(){ //Aqui vamos a empezar a llamar el json por pregunta
         console.log("Arrancamos con la Trivia");

@@ -30,7 +30,11 @@ function init(){
         })
         .catch((error) => {
             // error while getting json
-            console.log('Aca esta el error', error.response.data);
+            if(error.response){
+                console.log('Aca esta el error',error.response.data);
+            } else {
+                console.log(error);
+            }
         })
     })
 }
