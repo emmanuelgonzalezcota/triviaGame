@@ -24,7 +24,7 @@ function init(){
             console.log(response.status);
             console.log(response.data);
             console.log('API response code:', response.data.response_code);//clasificar los erroes de la documentacion 0-5
-            const jsonResponse = responsa.data.results
+            const jsonResponse = response.data.results
             const triviaGame = new TriviaGame(jsonResponse)
             triviaGame.start()
         })
