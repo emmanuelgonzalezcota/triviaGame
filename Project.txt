@@ -1,0 +1,80 @@
+A partir de esta api https://opentdb.com/api_config.php crear un sitio web que cree trivias según los siguientes parámetros:
+    Siempre son 10 preguntas
+    Se puede modificar la dificultad
+    Se puede seleccionar el tipo de respuesta
+    Y se puede escoger la categoría.
+
+Una vez seleccionado las parámetros se crea la trivia
+    Se deben mostrar las preguntas
+    Se deben mostrar las posibles respuestas
+    Se deben de contestar
+    Cada pregunta correcta vale 100 puntos (Mostrar puntaje final)
+    Botón de crear nueva trivia
+
+Cosas a tener en cuenta
+    Diseño libre (Bootstrap, materialize, o tu propio css)
+    Repo en github (Github pages es un plus)
+    Webpack, ecma 6, SCSS (BEM es un plus)
+    Fecha de entrega: 19 de octubre
+
+https://opentdb.com/api.php?amount=10
+
+query
+https://opentdb.com/api.php?
+
+number of questions
+amount=10
+
+&
+
+trivia_category
+category=9
+<select name="trivia_category" class="form-control">
+	<option value="any">Any Category</option>
+	<option value="9">General Knowledge</option>
+    <option value="10">Entertainment: Books</option>
+    <option value="11">Entertainment: Film</option>
+    <option value="12">Entertainment: Music</option>
+    <option value="13">Entertainment: Musicals &amp; Theatres</option>
+    <option value="14">Entertainment: Television</option>
+    <option value="15">Entertainment: Video Games</option>
+    <option value="16">Entertainment: Board Games</option>
+    <option value="17">Science &amp; Nature</option>
+    <option value="18">Science: Computers</option>
+    <option value="19">Science: Mathematics</option>
+    <option value="20">Mythology</option>
+    <option value="21">Sports</option>
+    <option value="22">Geography</option>
+    <option value="23">History</option>
+    <option value="24">Politics</option>
+    <option value="25">Art</option>
+    <option value="26">Celebrities</option>
+    <option value="27">Animals</option>
+    <option value="28">Vehicles</option>
+    <option value="29">Entertainment: Comics</option>
+    <option value="30">Science: Gadgets</option>
+    <option value="31">Entertainment: Japanese Anime &amp; Manga</option>
+    <option value="32">Entertainment: Cartoon &amp; Animations</option>		
+</select>
+
+&
+
+difficulty
+difficulty=easy
+<select name="trivia_difficulty" class="form-control">
+	<option value="any">Any Difficulty</option>
+	<option value="easy">Easy</option>
+	<option value="medium">Medium</option>
+	<option value="hard">Hard</option>
+</select>
+
+&
+
+trivia_type
+type=multiple
+<select name="trivia_type" class="form-control">&gt;
+			<option value="any">Any Type</option>
+			<option value="multiple">Multiple Choice</option>
+			<option value="boolean">True / False</option>
+		</select>
+

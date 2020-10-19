@@ -1,0 +1,237 @@
+{
+    "response_code": 0,
+    "results": [
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which president erased the national debt of the United States?",
+            "correct_answer": "Andrew Jackson",
+            "incorrect_answers": [
+                "Ronald Reagan",
+                "John F. Kennedy",
+                "Franklin Roosevelt"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Which Native American tribe\/nation requires at least one half blood quantum (equivalent to one parent) to be eligible for membership?",
+            "correct_answer": "Yomba Shoshone Tribe",
+            "incorrect_answers": [
+                "Standing Rock Sioux Tribe",
+                "Kiowa Tribe of Oklahoma",
+                "Pawnee Nation of Oklahoma"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "The 2014 movie &quot;The Raid 2: Berandal&quot; was mainly filmed in which Asian country?",
+            "correct_answer": "Indonesia",
+            "incorrect_answers": [
+                "Thailand",
+                "Brunei",
+                "Malaysia"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "According to the United States Constitution, how old must a person be to be elected President of the United States?",
+            "correct_answer": "35",
+            "incorrect_answers": [
+                "30",
+                "40",
+                "45"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "What is the name of Niccol&ograve; Machiavelli&#039;s work that argued effective leaders needed to crush their opponents at all costs?",
+            "correct_answer": "The Prince",
+            "incorrect_answers": [
+                "The Rape of Lucrece",
+                "Will to Power",
+                "Love&#039;s Labours Lost"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "What is former United States President Bill Clinton&#039;s full name?",
+            "correct_answer": "William Jefferson Clinton",
+            "incorrect_answers": [
+                "William Roosevelt Clinton",
+                "William Truman Clinton",
+                "William Lincoln Clinton"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "In United States history, how many vice presidents did Franklin D. Roosevelt have during his time in office as president?",
+            "correct_answer": "3",
+            "incorrect_answers": [
+                "1",
+                "2",
+                "0"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Former United States President Bill Clinton famously played which instrument?",
+            "correct_answer": "Saxophone",
+            "incorrect_answers": [
+                "Baritone horn",
+                "Piano",
+                "Violin"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Who was the longest-serving senator in US history, serving from 1959 to 2010?",
+            "correct_answer": "Robert Byrd",
+            "incorrect_answers": [
+                "Daniel Inouye",
+                "Strom Thurmond",
+                "Joe Biden"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Between 1973 to 1990, what country was ruled by dictator Augusto Pinochet?",
+            "correct_answer": "Chile",
+            "incorrect_answers": [
+                "Ethiopia",
+                "Indonesia",
+                "Nicaragua"
+            ]
+        }
+    ]
+}
+
+{
+    "response_code": 0,
+    "results": [
+        {
+            "category": "Politics",
+            "type": "boolean",
+            "difficulty": "easy",
+            "question": "The S in Harry S. Truman stands for &quot;Samuel&quot;.",
+            "correct_answer": "False",
+            "incorrect_answers": [
+                "True"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "The 2014 movie &quot;The Raid 2: Berandal&quot; was mainly filmed in which Asian country?",
+            "correct_answer": "Indonesia",
+            "incorrect_answers": [
+                "Thailand",
+                "Brunei",
+                "Malaysia"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Due to the Nagoya Resolution, China agreed to allow Taiwan to compete separately in international sporting events under what name?",
+            "correct_answer": "Chinese Taipei",
+            "incorrect_answers": [
+                "Chinese Taiwan",
+                "Republic of Taiwan",
+                "Republic of Taipei "
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "boolean",
+            "difficulty": "easy",
+            "question": "Russia passed a law in 2013 which outlaws telling children that homosexuals exist.",
+            "correct_answer": "True",
+            "incorrect_answers": [
+                "False"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Which of the following United States Presidents served the shortest term in office?",
+            "correct_answer": "William Henry Harrison",
+            "incorrect_answers": [
+                "Zachary Taylor",
+                "James A. Garfield",
+                "Warren G. Harding"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "boolean",
+            "difficulty": "easy",
+            "question": "One of Barack Obama&#039;s United States presidential campaign slogan&#039;s was &quot;Yes We Can&quot;.",
+            "correct_answer": "True",
+            "incorrect_answers": [
+                "False"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "boolean",
+            "difficulty": "medium",
+            "question": "The State of Queensland, Australia voted NO to a referendum for daylight savings in 1992.",
+            "correct_answer": "True",
+            "incorrect_answers": [
+                "False"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "boolean",
+            "difficulty": "easy",
+            "question": "Donald Trump won the popular vote in the 2016 United States presidential election.",
+            "correct_answer": "False",
+            "incorrect_answers": [
+                "True"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "boolean",
+            "difficulty": "hard",
+            "question": "Nazi Germany surrendered on Harry Truman&#039;s birthday while he was president.",
+            "correct_answer": "True",
+            "incorrect_answers": [
+                "False"
+            ]
+        },
+        {
+            "category": "Politics",
+            "type": "boolean",
+            "difficulty": "medium",
+            "question": "Helen Clark was the 37th Prime Minister of Australia.",
+            "correct_answer": "False",
+            "incorrect_answers": [
+                "True"
+            ]
+        }
+    ]
+}

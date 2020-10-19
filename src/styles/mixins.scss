@@ -1,0 +1,97 @@
+//Typography
+
+    @import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap);  
+    //$primaryFont:'Roboto';
+    $primaryFont: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    @mixin H1Font{
+        font-size:96px;
+        font-style:normal;
+        font-weight:700;
+        font-family: $primaryFont;
+    }
+    @mixin H2Font{
+        font-size:60px;
+        font-style:normal;
+        font-weight:700;
+        font-family: $primaryFont;
+    }
+    @mixin H3Font{
+        font-size:60px;
+        font-style:normal;
+        font-weight:700;
+        font-family: $primaryFont;
+    }
+    @mixin H4Font{
+        font-size:32px;
+        font-style:normal;
+        font-weight:700;
+        font-family: $primaryFont;
+    }
+    @mixin H5Font{
+        font-size:24px;
+        font-style:normal;
+        font-weight:700;
+        font-family: $primaryFont;
+    }
+    @mixin H6Font{
+        font-size:20px;
+        font-style:normal;
+        font-weight:700;
+        font-family: $primaryFont;
+    }
+    @mixin BodyFont{
+        font-size:16px;
+        font-style:normal;
+        font-weight:400;
+        font-family: $primaryFont;
+    }
+    @mixin CaptionFont{
+        font-size:14px;
+        font-style:normal;
+        font-weight:700;
+        font-family: $primaryFont;
+    }
+    @mixin SmallFont{
+        font-size:12px;
+        font-style:normal;
+        font-weight:400;
+        font-family: $primaryFont;
+    }
+    @mixin ButtonFont{
+        font-size:12px;
+        font-style:normal;
+        font-weight:700;
+        text-transform:uppercase;
+        font-family: $primaryFont;
+    }
+
+//Blocks
+
+    @mixin blockHeaderAtt{
+        width: 100%;
+        margin-bottom: .5rem;
+        display: flex;
+        justify-content: center;
+        @include H5Font;  
+        color: $brandThirdColor;
+    }
+    
+    @mixin TriviaQandAAtt{
+        color: $neutralLightColor;
+        @include H5Font;
+        display:flex; 
+        align-items:center;
+        justify-content: center;
+        height: 4rem;
+    }
+
+    @mixin TriviaAnsAtt{
+        background: $brandSecondaryColor;
+        border:2px solid $brandThirdColor;
+        margin-top: .25rem;
+        border-radius: 1rem;
+        &:hover{
+            background: $focusColor;
+            border:2px solid $brandSecondaryColor;
+        }
+    }
