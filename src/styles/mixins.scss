@@ -76,20 +76,43 @@
         color: $brandThirdColor;
     }
     
-    @mixin TriviaQandAAtt{
+    @mixin TriviaQuestion{
         color: $neutralLightColor;
-        @include H5Font;
+        padding: .25rem .25rem .25rem .25rem;
+        @include H6Font;
+        display:flex; 
+        align-items:center;
+        justify-content: center;
+        height: 8rem;
+        text-align: justify;
+    }
+
+    @mixin TriviaScore{
+        background: $dangerColor;
+        border:2px solid $brandThirdColor;
+        color: $neutralLightColor;
+        text-align: justify;
         display:flex; 
         align-items:center;
         justify-content: center;
         height: 4rem;
-    }
-
-    @mixin TriviaAnsAtt{
-        background: $brandSecondaryColor;
-        border:2px solid $brandThirdColor;
         margin-top: .25rem;
         border-radius: 1rem;
+        @include H5Font;
+    }
+
+    @mixin TriviaAnswer{
+        background: $brandSecondaryColor;
+        border:2px solid $brandThirdColor;
+        color: $neutralLightColor;
+        text-align: justify;
+        display:flex; 
+        align-items:center;
+        justify-content: center;
+        height: 4rem;
+        margin-top: .25rem;
+        border-radius: 1rem;
+        @include H5Font;
         &:hover{
             background: $focusColor;
             border:2px solid $brandSecondaryColor;

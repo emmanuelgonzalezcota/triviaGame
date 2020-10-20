@@ -48,11 +48,11 @@ body{
             }
             .trivia-form__label,.trivia-form__button{
                 color:$brandSecondaryColor;
-                @include CaptionFont;           
+                @include H6Font;           
             }
             .trivia-form__options{
                 color: $brandPrimaryColor;
-                @include CaptionFont;
+                @include H6Font;
                 margin-bottom:.5rem;
                 width:$widthColumn;
             } 
@@ -86,8 +86,7 @@ body{
                 padding: .25rem 0 .125rem 0;
             }
             .trivia-attributes__score{
-                background: $dangerColor;
-                @include TriviaQandAAtt;
+                @include TriviaScore;
                 width:$widthColumn+(-1rem);
                 border-radius: 1rem;
             }
@@ -98,18 +97,16 @@ body{
             padding: .25rem 0 0 0;
             .trivia-question-display__question{
                 background: $brandThirdColor;
-                @include TriviaQandAAtt;
+                @include TriviaQuestion;
             }
             .trivia-answer-block-A{
                 .trivia-answer-block-A__answer-a,.trivia-answer-block-A__answer-b{
-                    @include TriviaQandAAtt;
-                    @include TriviaAnsAtt;                  
+                    @include TriviaAnswer;                  
                 }
             }
             .trivia-answer-block-B{
                 .trivia-answer-block-B__answer-c,.trivia-answer-block-B__answer-d{
-                    @include TriviaQandAAtt;
-                    @include TriviaAnsAtt;
+                    @include TriviaAnswer;
                 }
             }
         }
