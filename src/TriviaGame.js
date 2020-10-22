@@ -9,20 +9,21 @@ class TriviaGame {
         this.allAnswers = [];
         this.correctAnswers = [];
         this.selectedAnswers = [];
+        this.questionIndex=0;
     }
 
     // Setters
-    setCategory(i) {
-        this.category.push(this.data[i].category);
-        return (this.category[i]);
+    setCategory() {
+        this.category.push(this.data[this.questionIndex].category);
+        return (this.category[this.questionIndex]);
     }
-    setDifficulty(i) {
-        this.difficulty.push(this.data[i].difficulty);
-        return (this.difficulty[i]);
+    setDifficulty() {
+        this.difficulty.push(this.data[this.questionIndex].difficulty);
+        return (this.difficulty[this.questionIndex]);
     }
-    setType(i) {
-        this.type.push(this.data[i].type);
-        return (this.type[i]);
+    setType() {
+        this.type.push(this.data[this.questionIndex].type);
+        return (this.type[this.questionIndex]);
     }
 
     shuffle(array) {
@@ -40,23 +41,17 @@ class TriviaGame {
         return array;
     }
 
-    setAnswers(i) {
-        const tempAnswers = this.data[i].incorrect_answers;
-        tempAnswers.push(this.data[i].correct_answer);
-        //console.log('TempAnswers:',tempAnswers);
+    setAnswers() {
+        const tempAnswers = this.data[this.questionIndex].incorrect_answers;
+        tempAnswers.push(this.data[this.questionIndex].correct_answer);
         const shuffledTempAnswers = this.shuffle(tempAnswers);
-        //console.log('TempAnswers Shuffled:',shuffledTempAnswers);
         this.allAnswers.push(shuffledTempAnswers);
         return (shuffledTempAnswers);
     }
 
-    setCorrectAnswers(i){
-        this.correctAnswers.push(this.data[i].correct_answer);
-        return (this.correctAnswers[i]);
-    }
-
-    setSelectedAnswers(XXX){
-
+    setCorrectAnswers(){
+        this.correctAnswers.push(this.data[this.questionIndex].correct_answer);
+        return (this.correctAnswers[this.questionIndex]);
     }
 
     updateAttributes(category, difficulty, type, questionNumber) {
@@ -77,120 +72,101 @@ class TriviaGame {
         triviaAttributes.appendChild(attributes)
     }
 
-    updateQandA(question, answers) {
+    updateQandA(question,answers) {
         const triviaQuestionDisplay = document.querySelector('.trivia-question-display');
         triviaQuestionDisplay.innerHTML = ' '
         var display = document.createElement('div')
         display.setAttribute('class', 'trivia-question-display');
-        if (answers.length === 4) {
+        // if (answers.length===2) {
             display.innerHTML = `<div class="trivia-question-display__question" id="question">${question}</div>`
                 + `<section class="trivia-answer-block-A">`
-                + `    <div class="trivia-answer-block-A__answer-a" id="answer-a">${answers[0]}</div>`
-                + `    <div class="trivia-answer-block-A__answer-b" id="answer-b">${answers[1]}</div>`
+                + `    <div class="trivia-answer-block-A__answer-a" id="answer-a" value="${answers[0]}">${answers[0]}</div>`
+                + `    <div class="trivia-answer-block-A__answer-b" id="answer-b" value="${answers[1]}">${answers[1]}</div>`
                 + `</section>`
                 + `<section class="trivia-answer-block-B">`
-                + `    <div class="trivia-answer-block-B__answer-c" id="answer-c">${answers[2]}</div>`
-                + `    <div class="trivia-answer-block-B__answer-d" id="answer-d">${answers[3]}</div>`
+                + `    <div class="trivia-answer-block-B__answer-c" id="answer-c" value="${answers[2]}">${answers[2]}</div>`
+                + `    <div class="trivia-answer-block-B__answer-d" id="answer-d" value="${answers[3]}">${answers[3]}</div>`
                 + `</section>`;
-        } else {
-            display.innerHTML = `<div class="trivia-question-display__question" id="question">${question}</div>`
-                + `<section class="trivia-answer-block-A">`
-                + `    <div class="trivia-answer-block-A__answer-a" id="answer-a">${answers[0]}</div>`
-                + `</section>`
-                + `<section class="trivia-answer-block-B">`
-                + `    <div class="trivia-answer-block-B__answer-c" id="answer-c">${answers[1]}</div>`
-                + `</section>`;
-        }
+        // } else {
+        //     display.innerHTML = `<div class="trivia-question-display__question" id="question">${question}</div>`
+        //         + `<section class="trivia-answer-block-A">`
+        //         + `    <div class="trivia-answer-block-A__answer-a" id="answer-a" value="${answers[0]}">${answers[0]}</div>`
+        //         + `</section>`
+        //         + `<section class="trivia-answer-block-B">`
+        //         + `    <div class="trivia-answer-block-B__answer-c" id="answer-c" value="${answers[1]}">${answers[1]}</div>`
+        //         + `</section>`;
+        // }
         triviaQuestionDisplay.appendChild(display);
     }
 
-    // Getters
-    // buildFlag(cb,info){
-    //     // Info es la informacion del pais
-    //     // cb es un callback el cual me va a yudar a ejecutar el listener de las imagenes
-    //     const img = document.createElement('img');
-    //     img.setAttribute('src',info.flag)
-    //     img.setAttribute('id',info.name)
-    //     img.addEventListener('click',cb)
-    //     return img;
-    // }
+    validateAnswer(answers,correctAnswer,answerId){        
+        for (let i = 0; i < answers.length; i++) {
+            if(correctAnswer===answers[i]){
+                if (answerId === "answer-a" && i === 0){
+                    console.log("Correct Answer A");
+                    this.score+=100; 
+                    this.questionIndex++;
+                    console.log(this.questionIndex);
+                    return console.log(this.score)
+                }
+                if (answerId === "answer-b" && i === 1){
+                    console.log("Correct Answer B");
+                    this.score+=100; 
+                    this.questionIndex++;
+                    console.log(this.questionIndex);
+                    return console.log(this.score)
+                }
+                if (answerId === "answer-c" && i === 2){
+                    console.log("Correct Answer C");
+                    this.score+=100; 
+                    this.questionIndex++;
+                    console.log(this.questionIndex);
+                    return console.log(this.score)
+                }
+                if (answerId === "answer-d" && i === 3){
+                    console.log("Correct Answer D");
+                    this.score+=100; 
+                    this.questionIndex++;
+                    console.log(this.questionIndex);
+                    return console.log(this.score)
+                }
+            }
+        }
+        this.questionIndex++;
+        console.log(this.questionIndex);
+    }
 
     start() { //Aqui vamos a empezar a llamar el json por pregunta
         console.log("Arrancamos con la Trivia");
-        let i = 0;
-        while (i < 1) {
-            const question = this.data[i].question;
+        //while (this.questionIndex < 1)  {
+            const question = this.data[this.questionIndex].question;
             //Set Question Attributes
-            const category = this.setCategory(i);
-            const difficulty = this.setDifficulty(i);
-            const type = this.setType(i);
-            const questionNumber = i + 1;
+            const category = this.setCategory();
+            const difficulty = this.setDifficulty();
+            const type = this.setType();
+            const questionNumber = this.questionIndex + 1;
             this.updateAttributes(category, difficulty, type, questionNumber)
             //Set answers(shuffle correct and incorrect)
-            const answers = this.setAnswers(i);
+            const answers = this.setAnswers();
             //Show Q and As
             this.updateQandA(question, answers);
             //Event listener
-            const correctAnswer = this.setCorrectAnswers(i);
-            // const clickAnswer = (event) => {
-            //     if (correctAnswer === event.target.XXX){
+            const correctAnswer = this.setCorrectAnswers();
+            const clickAnswer = (event) => {
+                this.validateAnswer(answers,correctAnswer,event.target.id)
+            }
 
-            //     } else {
+            document.getElementById("answer-a").onclick = clickAnswer
+            document.getElementById("answer-b").onclick = clickAnswer
+            document.getElementById("answer-c").onclick = clickAnswer
+            document.getElementById("answer-d").onclick = clickAnswer 
 
-            //     }
-            // }
-
-            // buildFlag(cb,info){
-            //     // Info es la informacion del pais
-            //     // cb es un callback el cual me va a yudar a ejecutar el listener de las imagenes
-            //     const img = document.createElement('img');
-            //     img.setAttribute('src',info.flag)
-            //     img.setAttribute('id',info.name)
-            //     img.addEventListener('click',cb)
-            //     return img;
-            // }
-
-            // const clickFlag = (event) => {
-            //     // El scope es diferente entre un function normal y un arrow function
-            //     if (this.winner.name === event.target.id) {
-            //         // Aqui el usuario dio click a la bandera ganadora
-            //         respuesta.innerHTML = "¡Correcto!"
-            //         poblacion.innerHTML = "Poblacion: " + this.winner.population
-            //         capital.innerHTML = "Capital: " + this.winner.capital
-            //     } else {
-            //         respuesta.innerHTML = "¡Incorrecto!"
-            //     }
-            // }
-
-            // this.selectedCountries.forEach(country => {
-            //     const flag = this.buildFlag(clickFlag, country)
-            //     banderas.appendChild(flag)
-            // })
-            // buildFlag
-
-            //Validate Answer and set score
             //Next question
-            i++;
-        }
+        //} 
 
         //show Score Summary with correct answers
         //option to restart
-
-        //     this.choiceCountries();
-        //     this.winner = this.choiceWinner;
-        //     const banderas = document.querySelector('.flags');
-        //     const respuesta = document.getElementById('answer');
-        //     const poblacion = document.getElementById('population');
-        //     const capital = document.getElementById('capital');
-        //     const textoPais = document.getElementById('country-name');
-        //     banderas.innerHTML = '';
-        //     respuesta.innerHTML = '';
-        //     poblacion.innerHTML = '';
-        //     capital.innerHTML = '';
-        //     textoPais.innerHTML = this.winner.translations.es;
-
     }
-
 }
 
 export default TriviaGame;
