@@ -110,5 +110,46 @@ body{
                 }
             }
         }
+        .trivia-answer-confirm{
+            width: $widthColumn;
+
+            .trivia-answer-confirm__header{
+                @include blockHeaderAtt;
+            }
+
+            .trivia-answer-confirm__answer-component{
+                display: flex;
+                align-items: center;
+                width: wrap;
+                
+                .trivia-answer-confirm__answer{
+                    background: $successColor;
+                    border:2px solid $brandThirdColor;
+                    color: $neutralLightColor;
+                    text-align: justify;
+                    display:flex; 
+                    align-items:center;
+                    justify-content: center;
+                    height: 4rem;
+                    width:15rem;
+                    border-radius: .75rem;
+                    @include H6Font;
+                }
+
+                .trivia-answer-confirm__button{
+                    color:$brandThirdColor;
+                    @include H6Font;
+                    height: 4rem;
+                    width:3rem;
+                    border-radius: .75rem;
+                    margin-left: .5rem;
+                    &:hover{
+                        background: $successColor;
+                        color: $neutralLightColor;
+                    }
+                }
+
+            }
+        }
     }
 }

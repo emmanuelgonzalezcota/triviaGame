@@ -26,19 +26,27 @@ class TriviaGame {
         return (this.type[this.questionIndex]);
     }
 
-    shuffle(array) {
-        let currentIndex = array.length, temporaryValue, randomIndex;
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
-            // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-            // And swap it with the current element.
-            temporaryValue = array[currentIndex];
-            array[currentIndex] = array[randomIndex];
-            array[randomIndex] = temporaryValue;
+    // shuffle(array) {
+    //     let currentIndex = array.length, temporaryValue, randomIndex;
+    //     // While there remain elements to shuffle...
+    //     while (0 !== currentIndex) {
+    //         // Pick a remaining element...
+    //         randomIndex = Math.floor(Math.random() * currentIndex);
+    //         currentIndex -= 1;
+    //         // And swap it with the current element.
+    //         temporaryValue = array[currentIndex];
+    //         array[currentIndex] = array[randomIndex];
+    //         array[randomIndex] = temporaryValue;
+    //     }
+    //     return array;
+    // }
+
+    shuffle(a) {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
         }
-        return array;
+        return a;
     }
 
     setAnswers() {
@@ -77,7 +85,7 @@ class TriviaGame {
         triviaQuestionDisplay.innerHTML = ' '
         var display = document.createElement('div')
         display.setAttribute('class', 'trivia-question-display');
-        // if (answers.length===2) {
+        if (answers.length===4) {
             display.innerHTML = `<div class="trivia-question-display__question" id="question">${question}</div>`
                 + `<section class="trivia-answer-block-A">`
                 + `    <div class="trivia-answer-block-A__answer-a" id="answer-a" value="${answers[0]}">${answers[0]}</div>`
@@ -87,53 +95,84 @@ class TriviaGame {
                 + `    <div class="trivia-answer-block-B__answer-c" id="answer-c" value="${answers[2]}">${answers[2]}</div>`
                 + `    <div class="trivia-answer-block-B__answer-d" id="answer-d" value="${answers[3]}">${answers[3]}</div>`
                 + `</section>`;
-        // } else {
-        //     display.innerHTML = `<div class="trivia-question-display__question" id="question">${question}</div>`
-        //         + `<section class="trivia-answer-block-A">`
-        //         + `    <div class="trivia-answer-block-A__answer-a" id="answer-a" value="${answers[0]}">${answers[0]}</div>`
-        //         + `</section>`
-        //         + `<section class="trivia-answer-block-B">`
-        //         + `    <div class="trivia-answer-block-B__answer-c" id="answer-c" value="${answers[1]}">${answers[1]}</div>`
-        //         + `</section>`;
-        // }
+        } else {
+            display.innerHTML = `<div class="trivia-question-display__question" id="question">${question}</div>`
+                + `<section class="trivia-answer-block-A">`
+                + `    <div class="trivia-answer-block-A__answer-a" id="answer-a" value="${answers[0]}">${answers[0]}</div>`
+                + `</section>`
+                + `<section class="trivia-answer-block-B">`
+                + `    <div class="trivia-answer-block-B__answer-c" id="answer-c" value="${answers[1]}">${answers[1]}</div>`
+                + `</section>`;
+        }
         triviaQuestionDisplay.appendChild(display);
     }
 
-    validateAnswer(answers,correctAnswer,answerId){        
+    
+    validateAnswer(answer,isCorrect){
+        console.log("validateAnswer__answer:",answer);
+        console.log("validateAnswer__isCorrect:",isCorrect);
+        const triviaAnswerConfirm = document.querySelector('.trivia-answer-confirm');
+        console.log(triviaAnswerConfirm);
+        triviaAnswerConfirm.innerHTML = '';
+        var answerConfirm = document.createElement('div')
+        answerConfirm.setAttribute('class', 'trivia-answer-confirm');
+        answerConfirm.innerHTML =    `<div class="trivia-answer-confirm__header">Answer Selected</div>`
+                                    +`<div class="trivia-answer-confirm__answer-component">`
+                                    +    `<div class="trivia-answer-confirm__answer" id="answerSelected">${answer}</div>`
+                                    +    `<input type="submit" value="√" class="trivia-answer-confirm__button" id="confirmButton">`
+                                    +`</div>`
+        triviaAnswerConfirm.appendChild(answerConfirm);
+    }
+
+
+    scoreAnswer(answers,correctAnswer,answerId){
+        let isCorrect = false;
+        //console.log(answerId);
+        let answerIdIndex = null;
+        if(answerId === "answer-a"){answerIdIndex=0}
+        if(answerId === "answer-b"){answerIdIndex=1}
+        if(answerId === "answer-c"){answerIdIndex=2}
+        if(answerId === "answer-d"){answerIdIndex=3}
         for (let i = 0; i < answers.length; i++) {
             if(correctAnswer===answers[i]){
                 if (answerId === "answer-a" && i === 0){
                     console.log("Correct Answer A");
-                    this.score+=100; 
-                    this.questionIndex++;
-                    console.log(this.questionIndex);
-                    return console.log(this.score)
+                    isCorrect = true;
+                    //this.score+=100;
+                    //this.questionIndex++;
+                    //console.log(this.questionIndex);
+                    //return console.log(this.score)
                 }
                 if (answerId === "answer-b" && i === 1){
                     console.log("Correct Answer B");
-                    this.score+=100; 
-                    this.questionIndex++;
-                    console.log(this.questionIndex);
-                    return console.log(this.score)
+                    isCorrect = true;
+                    //this.score+=100; 
+                    //this.questionIndex++;
+                    //console.log(this.questionIndex);
+                    //return console.log(this.score)
                 }
                 if (answerId === "answer-c" && i === 2){
                     console.log("Correct Answer C");
-                    this.score+=100; 
-                    this.questionIndex++;
-                    console.log(this.questionIndex);
-                    return console.log(this.score)
+                    isCorrect = true;
+                    //this.score+=100; 
+                    //this.questionIndex++;
+                    //console.log(this.questionIndex);
+                    //return console.log(this.score)
                 }
                 if (answerId === "answer-d" && i === 3){
                     console.log("Correct Answer D");
-                    this.score+=100; 
-                    this.questionIndex++;
-                    console.log(this.questionIndex);
-                    return console.log(this.score)
+                    isCorrect = true;
+                    //this.score+=100; 
+                    //this.questionIndex++;
+                    //console.log(this.questionIndex);
+                    //return console.log("Score:",this.score)
                 }
             }
         }
-        this.questionIndex++;
-        console.log(this.questionIndex);
+        //console.log("scoreAnswer:",answers[answerIdIndex]);
+        this.validateAnswer(answers[answerIdIndex],isCorrect);
+        //this.questionIndex++;
+        //console.log(this.questionIndex);
     }
 
     start() { //Aqui vamos a empezar a llamar el json por pregunta
@@ -153,7 +192,8 @@ class TriviaGame {
             //Event listener
             const correctAnswer = this.setCorrectAnswers();
             const clickAnswer = (event) => {
-                this.validateAnswer(answers,correctAnswer,event.target.id)
+                console.log("start__eventTargetID",event.target.id)
+                this.scoreAnswer(answers,correctAnswer,event.target.id)
             }
 
             document.getElementById("answer-a").onclick = clickAnswer
