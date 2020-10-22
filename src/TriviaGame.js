@@ -122,6 +122,13 @@ class TriviaGame {
                                     +    `<input type="submit" value="√" class="trivia-answer-confirm__button" id="confirmButton">`
                                     +`</div>`
         triviaAnswerConfirm.appendChild(answerConfirm);
+        const clickValidateAnswer = (event) => {
+            console.log("validateAnswer__eventTargetID",event.target.id)
+            if (isCorrect){this.score+=100;}
+            this.questionIndex++;
+            this.start();
+        }
+        document.getElementById("confirmButton").onclick = clickValidateAnswer
     }
 
 
@@ -176,7 +183,11 @@ class TriviaGame {
     }
 
     start() { //Aqui vamos a empezar a llamar el json por pregunta
-        console.log("Arrancamos con la Trivia");
+        if (this.questionIndex===0){
+            console.log("Arrancamos con la Trivia");
+        } else {
+            console.log("Siguiente pregunta");
+        }
         //while (this.questionIndex < 1)  {
             const question = this.data[this.questionIndex].question;
             //Set Question Attributes
