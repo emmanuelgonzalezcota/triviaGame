@@ -175,5 +175,18 @@ body{
 
             }
         }
+        
+        .trivia-answer-endgame{
+            width: $widthColumn;
+            margin-top: .25rem;
+            margin-left: .25rem;
+            .trivia-answer-endgame__game-over-image{
+                display: flex;
+                image-rendering: auto;
+            }
+            .trivia-answer-endgame__header{
+                @include blockHeaderAtt;
+            }
+        }
     }
 }

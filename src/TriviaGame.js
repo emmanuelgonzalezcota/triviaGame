@@ -97,6 +97,17 @@ class TriviaGame {
         triviaQuestionDisplay.appendChild(display);
     }
 
+    gameOver(){
+        const endgame = document.querySelector('.trivia-answer-endgame');
+        endgame.innerHTML = ' '
+        var gameOverSequence = document.createElement('div')
+        gameOverSequence.setAttribute('class', 'trivia-answer-endgame');
+        gameOverSequence.innerHTML = `<img src="./images/game-over.svg" class="trivia-answer-endgame__game-over-img"></img>`
+                                    +`<div class="trivia-answer-endgame__header">Get PRO version to check out the Q&A and graphics detail!</div>`
+        console.log(gameOverSequence)
+        endgame.appendChild(gameOverSequence)
+    }
+
 
     validateAnswer(answer, isCorrect) {
         console.log("validateAnswer__answer:", answer);
@@ -117,7 +128,11 @@ class TriviaGame {
             if (isCorrect) { this.score += 100; }
             this.setSelectedAnswers(answer);
             this.questionIndex++;
-            this.start();
+            if (this.questionIndex===10){
+                this.gameOver();
+            } else {
+                this.start();
+            }
         }
         document.getElementById("confirmButton").onclick = clickValidateAnswer
     }
