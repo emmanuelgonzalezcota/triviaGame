@@ -26,21 +26,6 @@ class TriviaGame {
         return (this.type[this.questionIndex]);
     }
 
-    // shuffle(array) {
-    //     let currentIndex = array.length, temporaryValue, randomIndex;
-    //     // While there remain elements to shuffle...
-    //     while (0 !== currentIndex) {
-    //         // Pick a remaining element...
-    //         randomIndex = Math.floor(Math.random() * currentIndex);
-    //         currentIndex -= 1;
-    //         // And swap it with the current element.
-    //         temporaryValue = array[currentIndex];
-    //         array[currentIndex] = array[randomIndex];
-    //         array[randomIndex] = temporaryValue;
-    //     }
-    //     return array;
-    // }
-
     shuffle(a) {
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -134,7 +119,6 @@ class TriviaGame {
 
     scoreAnswer(answers,correctAnswer,answerId){
         let isCorrect = false;
-        //console.log(answerId);
         let answerIdIndex = null;
         if(answerId === "answer-a"){answerIdIndex=0}
         if(answerId === "answer-b"){answerIdIndex=1}
@@ -145,41 +129,23 @@ class TriviaGame {
                 if (answerId === "answer-a" && i === 0){
                     console.log("Correct Answer A");
                     isCorrect = true;
-                    //this.score+=100;
-                    //this.questionIndex++;
-                    //console.log(this.questionIndex);
-                    //return console.log(this.score)
                 }
                 if (answerId === "answer-b" && i === 1){
                     console.log("Correct Answer B");
                     isCorrect = true;
-                    //this.score+=100; 
-                    //this.questionIndex++;
-                    //console.log(this.questionIndex);
-                    //return console.log(this.score)
                 }
                 if (answerId === "answer-c" && i === 2){
                     console.log("Correct Answer C");
                     isCorrect = true;
-                    //this.score+=100; 
-                    //this.questionIndex++;
-                    //console.log(this.questionIndex);
-                    //return console.log(this.score)
                 }
                 if (answerId === "answer-d" && i === 3){
                     console.log("Correct Answer D");
                     isCorrect = true;
-                    //this.score+=100; 
-                    //this.questionIndex++;
-                    //console.log(this.questionIndex);
-                    //return console.log("Score:",this.score)
                 }
             }
         }
-        //console.log("scoreAnswer:",answers[answerIdIndex]);
         this.validateAnswer(answers[answerIdIndex],isCorrect);
-        //this.questionIndex++;
-        //console.log(this.questionIndex);
+
     }
 
     start() { //Aqui vamos a empezar a llamar el json por pregunta
@@ -206,12 +172,10 @@ class TriviaGame {
                 console.log("start__eventTargetID",event.target.id)
                 this.scoreAnswer(answers,correctAnswer,event.target.id)
             }
-
             document.getElementById("answer-a").onclick = clickAnswer
             document.getElementById("answer-b").onclick = clickAnswer
             document.getElementById("answer-c").onclick = clickAnswer
             document.getElementById("answer-d").onclick = clickAnswer 
-
             //Next question
         //} 
 
