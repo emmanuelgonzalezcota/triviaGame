@@ -1,3 +1,4 @@
+import gameOver from './images/game-over.svg'
 class TriviaGame {
 
     constructor(jsonResponse) {
@@ -102,7 +103,7 @@ class TriviaGame {
         endgame.innerHTML = ' '
         var gameOverSequence = document.createElement('div')
         gameOverSequence.setAttribute('class', 'trivia-answer-endgame');
-        gameOverSequence.innerHTML = `<img src="./images/game-over.svg" class="trivia-answer-endgame__game-over-img"></img>`
+        gameOverSequence.innerHTML = `<img src="${gameOver}" class="trivia-answer-endgame__game-over-img"></img>`
                                     +`<div class="trivia-answer-endgame__header">Get PRO version to check out the Q&A and graphics detail!</div>`
         console.log(gameOverSequence)
         endgame.appendChild(gameOverSequence)
@@ -194,7 +195,6 @@ class TriviaGame {
 
         //show Score Summary with correct answers
         //Aqui armamos graficas con las respuestas y lo guardado en la clase
-        //option to restart
     }
 }
 
