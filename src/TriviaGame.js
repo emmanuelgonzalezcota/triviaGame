@@ -9,10 +9,10 @@ class TriviaGame {
         this.allAnswers = [];
         this.correctAnswers = [];
         this.selectedAnswers = [];
-        this.questionIndex=0;
+        this.questionIndex = 0;
     }
 
-    // Setters
+    // Setters and Getters
     setCategory() {
         this.category.push(this.data[this.questionIndex].category);
         return (this.category[this.questionIndex]);
@@ -42,9 +42,14 @@ class TriviaGame {
         return (shuffledTempAnswers);
     }
 
-    setCorrectAnswers(){
+    setCorrectAnswers() {
         this.correctAnswers.push(this.data[this.questionIndex].correct_answer);
         return (this.correctAnswers[this.questionIndex]);
+    }
+
+    setSelectedAnswers(answer) {
+        this.selectedAnswers.push(answer)
+        //return (answer)
     }
 
     updateAttributes(category, difficulty, type, questionNumber) {
@@ -65,12 +70,12 @@ class TriviaGame {
         triviaAttributes.appendChild(attributes)
     }
 
-    updateQandA(question,answers) {
+    updateQandA(question, answers) {
         const triviaQuestionDisplay = document.querySelector('.trivia-question-display');
         triviaQuestionDisplay.innerHTML = ' '
         var display = document.createElement('div')
         display.setAttribute('class', 'trivia-question-display');
-        if (answers.length===4) {
+        if (answers.length === 4) {
             display.innerHTML = `<div class="trivia-question-display__question" id="question">${question}</div>`
                 + `<section class="trivia-answer-block-A">`
                 + `    <div class="trivia-answer-block-A__answer-a" id="answer-a" value="${answers[0]}">${answers[0]}</div>`
@@ -92,94 +97,88 @@ class TriviaGame {
         triviaQuestionDisplay.appendChild(display);
     }
 
-    
-    validateAnswer(answer,isCorrect){
-        console.log("validateAnswer__answer:",answer);
-        console.log("validateAnswer__isCorrect:",isCorrect);
+
+    validateAnswer(answer, isCorrect) {
+        console.log("validateAnswer__answer:", answer);
+        console.log("validateAnswer__isCorrect:", isCorrect);
         const triviaAnswerConfirm = document.querySelector('.trivia-answer-confirm');
         console.log(triviaAnswerConfirm);
         triviaAnswerConfirm.innerHTML = '';
         var answerConfirm = document.createElement('div')
         answerConfirm.setAttribute('class', 'trivia-answer-confirm');
-        answerConfirm.innerHTML =    `<div class="trivia-answer-confirm__header">Answer Selected</div>`
-                                    +`<div class="trivia-answer-confirm__answer-component">`
-                                    +    `<div class="trivia-answer-confirm__answer" id="answerSelected">${answer}</div>`
-                                    +    `<input type="submit" value="√" class="trivia-answer-confirm__button" id="confirmButton">`
-                                    +`</div>`
+        answerConfirm.innerHTML = `<div class="trivia-answer-confirm__header">Answer Selected</div>`
+            + `<div class="trivia-answer-confirm__answer-component">`
+            + `<div class="trivia-answer-confirm__answer" id="answerSelected">${answer}</div>`
+            + `<input type="submit" value="√" class="trivia-answer-confirm__button" id="confirmButton">`
+            + `</div>`
         triviaAnswerConfirm.appendChild(answerConfirm);
         const clickValidateAnswer = (event) => {
-            console.log("validateAnswer__eventTargetID",event.target.id)
-            if (isCorrect){this.score+=100;}
+            console.log("validateAnswer__eventTargetID", event.target.id)
+            if (isCorrect) { this.score += 100; }
+            this.setSelectedAnswers(answer);
             this.questionIndex++;
             this.start();
         }
         document.getElementById("confirmButton").onclick = clickValidateAnswer
     }
 
-
-    scoreAnswer(answers,correctAnswer,answerId){
+    scoreAnswer(answers, correctAnswer, answerId) {
         let isCorrect = false;
         let answerIdIndex = null;
-        if(answerId === "answer-a"){answerIdIndex=0}
-        if(answerId === "answer-b"){answerIdIndex=1}
-        if(answerId === "answer-c"){answerIdIndex=2}
-        if(answerId === "answer-d"){answerIdIndex=3}
+        if (answerId === "answer-a") { answerIdIndex = 0 }
+        if (answerId === "answer-b") { answerIdIndex = 1 }
+        if (answerId === "answer-c") { answerIdIndex = 2 }
+        if (answerId === "answer-d") { answerIdIndex = 3 }
         for (let i = 0; i < answers.length; i++) {
-            if(correctAnswer===answers[i]){
-                if (answerId === "answer-a" && i === 0){
+            if (correctAnswer === answers[i]) {
+                if (answerId === "answer-a" && i === 0) {
                     console.log("Correct Answer A");
                     isCorrect = true;
                 }
-                if (answerId === "answer-b" && i === 1){
+                if (answerId === "answer-b" && i === 1) {
                     console.log("Correct Answer B");
                     isCorrect = true;
                 }
-                if (answerId === "answer-c" && i === 2){
+                if (answerId === "answer-c" && i === 2) {
                     console.log("Correct Answer C");
                     isCorrect = true;
                 }
-                if (answerId === "answer-d" && i === 3){
+                if (answerId === "answer-d" && i === 3) {
                     console.log("Correct Answer D");
                     isCorrect = true;
                 }
             }
         }
-        this.validateAnswer(answers[answerIdIndex],isCorrect);
-
+        this.validateAnswer(answers[answerIdIndex], isCorrect);
     }
 
     start() { //Aqui vamos a empezar a llamar el json por pregunta
-        if (this.questionIndex===0){
-            console.log("Arrancamos con la Trivia");
-        } else {
-            console.log("Siguiente pregunta");
+        if (this.questionIndex === 0) {console.log("Arrancamos con la Trivia");} 
+            else {console.log("Siguiente pregunta");}
+        const question = this.data[this.questionIndex].question;
+        //Set Question Attributes
+        const category = this.setCategory();
+        const difficulty = this.setDifficulty();
+        const type = this.setType();
+        const questionNumber = this.questionIndex + 1;
+        this.updateAttributes(category, difficulty, type, questionNumber)
+        //Set answers(shuffle correct and incorrect)
+        const answers = this.setAnswers();
+        //Show Q and As
+        this.updateQandA(question, answers);
+        //Event listeners
+        const correctAnswer = this.setCorrectAnswers();
+        const clickAnswer = (event) => {
+            console.log("start__eventTargetID", event.target.id)
+            this.scoreAnswer(answers, correctAnswer, event.target.id)
         }
-        //while (this.questionIndex < 1)  {
-            const question = this.data[this.questionIndex].question;
-            //Set Question Attributes
-            const category = this.setCategory();
-            const difficulty = this.setDifficulty();
-            const type = this.setType();
-            const questionNumber = this.questionIndex + 1;
-            this.updateAttributes(category, difficulty, type, questionNumber)
-            //Set answers(shuffle correct and incorrect)
-            const answers = this.setAnswers();
-            //Show Q and As
-            this.updateQandA(question, answers);
-            //Event listener
-            const correctAnswer = this.setCorrectAnswers();
-            const clickAnswer = (event) => {
-                console.log("start__eventTargetID",event.target.id)
-                this.scoreAnswer(answers,correctAnswer,event.target.id)
-            }
-            document.getElementById("answer-a").onclick = clickAnswer
-            document.getElementById("answer-b").onclick = clickAnswer
-            document.getElementById("answer-c").onclick = clickAnswer
-            document.getElementById("answer-d").onclick = clickAnswer 
-            //Next question
-        //} 
+        document.getElementById("answer-a").onclick = clickAnswer
+        document.getElementById("answer-b").onclick = clickAnswer
+        document.getElementById("answer-c").onclick = clickAnswer
+        document.getElementById("answer-d").onclick = clickAnswer
 
         //show Score Summary with correct answers
+        //Aqui armamos graficas con las respuestas y lo guardado en la clase
         //option to restart
     }
 }
